@@ -37,6 +37,41 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    NSString *docsDir;
+    NSArray *dirPaths;
+    
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    docsDir = dirPaths[0];
+    
+    // Build the path to the database file
+    _databasePath = [[NSString alloc]
+                     initWithString: [docsDir stringByAppendingPathComponent:
+                                      @"logs.db"]];
+    
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    
+    if ([filemgr fileExistsAtPath: _databasePath ] == NO)
+    {
+        const char *dbpath = [_databasePath UTF8String];
+        
+        if (sqlite3_open(dbpath, &_logDB) == SQLITE_OK)
+        {
+            char *errMsg;
+            const char *sql_stmt =
+            "CREATE TABLE IF NOT EXISTS LOGS (ID INTEGER PRIMARY KEY AUTOINCREMENT, LOCKEDSTATUS INTEGER, TIMESTAMP TEXT)";
+            // stores each log as bool (locked(1)/unlocked(0)) and the timestamp as text
+            
+            if (sqlite3_exec(_logDB, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK)
+            {
+                _dbstatus.text = @"Failed to create table";
+            }
+            sqlite3_close(_logDB);
+        } else {
+            _dbstatus.text = @"Failed to open/create database";
+        }
+    }
+    
     // create recentLogs array
     self.recentLogs = [[NSMutableArray alloc] init];
     
@@ -44,7 +79,66 @@
     [self loadInitialData];
 }
 
+/* yo i dont know where the f this method should actually go but probably not in this controller cuz the controller will never call it because it will be called by the mechanism that actually detects wat is wat
+ */
+- (void) saveData:(StatusChange *)log
+{
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    
+    if (sqlite3_open(dbpath, &_logDB) == SQLITE_OK)
+    {
+        // enter data correctly / format SQL
+        NSString *insertSQL = [NSString stringWithFormat:
+                               @"INSERT INTO LOGS (lockedstatus, timestamp) VALUES (%i, \"%@\")",
+                               [log getStatus], [log getTimestamp]];
+        
+        const char *insert_stmt = [insertSQL UTF8String];
+        sqlite3_prepare_v2(_logDB, insert_stmt,
+                           -1, &statement, NULL);
+        if (sqlite3_step(statement) == SQLITE_DONE)
+        {
+            _dbstatus.text = @"Log added";
+        } else {
+            _dbstatus.text = @"Failed to add log";
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(_logDB);
+    }
+}
 
+- (void) getRecents
+{
+    const char *dbpath = [_databasePath UTF8String];
+    sqlite3_stmt    *statement;
+    
+    if (sqlite3_open(dbpath, &_logDB) == SQLITE_OK)
+    {
+        NSString *querySQL = @"SELECT lockedstatus, timestamp FROM logs ORDER BY id DESC";
+        
+        const char *query_stmt = [querySQL UTF8String];
+        
+        if (sqlite3_prepare_v2(_logDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                // load dem resultttzzzzz in diz arrayyy bittttcchhhh
+                int doorStatus = sqlite3_column_int(statement, 0);
+                NSString *status = doorStatus ? @"LOCKED" : @"UNLOCKED";
+                NSString *timestamp = [[NSString alloc]
+                                        initWithUTF8String:(const char *) sqlite3_column_text(statement, 1)];
+                [self.recentLogs addObject:[NSString stringWithFormat:@"%@ at %@",status,timestamp]];
+                _dbstatus.text = @"dat ass";
+            } /*
+               else {
+                _status.text = @"THERE IZ NONE";
+            } */
+            sqlite3_finalize(statement);
+        }
+        sqlite3_close(_logDB);
+    }
+}
 
 - (void)loadInitialData {
     // load up stuff and fill the array
@@ -52,14 +146,16 @@
     // TEST DATA ***REPLACE ME ***
     // THIS PART IS NOTTTTTTT PART OF LOAD INITIAL DATA THIS IS TEST DATA IGNORE THIS
     StatusChange *change1 = [[StatusChange alloc] initWithState:YES];
-    [self.recentLogs addObject:change1];
+    [self saveData:change1];
     StatusChange *change2 = [[StatusChange alloc] initWithState:NO];
-    [self.recentLogs addObject:change2];
+    [self saveData:change2];
     StatusChange *change3 = [[StatusChange alloc] initWithState:YES];
-    [self.recentLogs addObject:change3];
+    [self saveData:change3];
+    
+    NSLog(@"BOOP! added three hardcoded things");
     
     // ok this is the part where i have to pull it from some sort of back end. so. later.
-    // TODO
+    [self getRecents];
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,7 +184,7 @@
     
     // Configure the cell...
     StatusChange *log = [self.recentLogs objectAtIndex:indexPath.row];
-    cell.textLabel.text = [log toStr];
+    cell.textLabel.text = log;
     
     return cell;
 }

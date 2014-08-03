@@ -11,7 +11,7 @@
 
 @interface LogTableViewController : UITableViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *status;
+@property (strong, nonatomic) IBOutlet UILabel *dbstatus;
 @property (strong, nonatomic) NSString *databasePath;
 @property (nonatomic) sqlite3 *logDB;
 
