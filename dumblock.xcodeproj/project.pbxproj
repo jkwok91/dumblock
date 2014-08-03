@@ -14,13 +14,15 @@
 		4C5798DA198D91CE004797BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5798D9198D91CE004797BF /* main.m */; };
 		4C5798DE198D91CE004797BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5798DD198D91CE004797BF /* AppDelegate.m */; };
 		4C5798E1198D91CE004797BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5798DF198D91CE004797BF /* Main.storyboard */; };
-		4C5798E4198D91CE004797BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5798E3198D91CE004797BF /* ViewController.m */; };
 		4C5798E6198D91CE004797BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5798E5198D91CE004797BF /* Images.xcassets */; };
 		4C5798ED198D91CE004797BF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5798EC198D91CE004797BF /* XCTest.framework */; };
 		4C5798EE198D91CE004797BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5798CD198D91CE004797BF /* Foundation.framework */; };
 		4C5798EF198D91CE004797BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5798D1198D91CE004797BF /* UIKit.framework */; };
 		4C5798F7198D91CE004797BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C5798F5198D91CE004797BF /* InfoPlist.strings */; };
 		4C5798F9198D91CE004797BF /* dumblockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5798F8198D91CE004797BF /* dumblockTests.m */; };
+		4C579904198D9370004797BF /* StatusChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C579903198D9370004797BF /* StatusChange.m */; };
+		4C579907198D9C2B004797BF /* LogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C579906198D9C2B004797BF /* LogTableViewController.m */; };
+		4C57990E198DA9AF004797BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C57990D198DA9AF004797BF /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +47,17 @@
 		4C5798DC198D91CE004797BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4C5798DD198D91CE004797BF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4C5798E0198D91CE004797BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4C5798E2198D91CE004797BF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4C5798E3198D91CE004797BF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4C5798E5198D91CE004797BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4C5798EB198D91CE004797BF /* dumblockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dumblockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5798EC198D91CE004797BF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4C5798F4198D91CE004797BF /* dumblockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "dumblockTests-Info.plist"; sourceTree = "<group>"; };
 		4C5798F6198D91CE004797BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C5798F8198D91CE004797BF /* dumblockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dumblockTests.m; sourceTree = "<group>"; };
+		4C579902198D9370004797BF /* StatusChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusChange.h; sourceTree = "<group>"; };
+		4C579903198D9370004797BF /* StatusChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusChange.m; sourceTree = "<group>"; };
+		4C579905198D9C2B004797BF /* LogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewController.h; sourceTree = "<group>"; };
+		4C579906198D9C2B004797BF /* LogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewController.m; sourceTree = "<group>"; };
+		4C57990D198DA9AF004797BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C57990E198DA9AF004797BF /* libsqlite3.dylib in Frameworks */,
 				4C5798D0198D91CE004797BF /* CoreGraphics.framework in Frameworks */,
 				4C5798D2198D91CE004797BF /* UIKit.framework in Frameworks */,
 				4C5798CE198D91CE004797BF /* Foundation.framework in Frameworks */,
@@ -101,6 +107,7 @@
 		4C5798CC198D91CE004797BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C57990D198DA9AF004797BF /* libsqlite3.dylib */,
 				4C5798CD198D91CE004797BF /* Foundation.framework */,
 				4C5798CF198D91CE004797BF /* CoreGraphics.framework */,
 				4C5798D1198D91CE004797BF /* UIKit.framework */,
@@ -115,8 +122,10 @@
 				4C5798DC198D91CE004797BF /* AppDelegate.h */,
 				4C5798DD198D91CE004797BF /* AppDelegate.m */,
 				4C5798DF198D91CE004797BF /* Main.storyboard */,
-				4C5798E2198D91CE004797BF /* ViewController.h */,
-				4C5798E3198D91CE004797BF /* ViewController.m */,
+				4C579902198D9370004797BF /* StatusChange.h */,
+				4C579903198D9370004797BF /* StatusChange.m */,
+				4C579905198D9C2B004797BF /* LogTableViewController.h */,
+				4C579906198D9C2B004797BF /* LogTableViewController.m */,
 				4C5798E5198D91CE004797BF /* Images.xcassets */,
 				4C5798D4198D91CE004797BF /* Supporting Files */,
 			);
@@ -249,7 +258,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C5798E4198D91CE004797BF /* ViewController.m in Sources */,
+				4C579907198D9C2B004797BF /* LogTableViewController.m in Sources */,
+				4C579904198D9370004797BF /* StatusChange.m in Sources */,
 				4C5798DE198D91CE004797BF /* AppDelegate.m in Sources */,
 				4C5798DA198D91CE004797BF /* main.m in Sources */,
 			);
