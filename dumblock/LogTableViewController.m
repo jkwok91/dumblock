@@ -80,6 +80,8 @@
 }
 
 /* yo i dont know where the f this method should actually go but probably not in this controller cuz the controller will never call it because it will be called by the mechanism that actually detects wat is wat
+ 
+    srsly take this da FUCK out. BRO~!!!!
  */
 - (void) saveData:(StatusChange *)log
 {
