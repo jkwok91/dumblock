@@ -16,6 +16,11 @@
 
 @end
 
+// FUTURE TODO
+// i want to be able to ask "who's home?" and then you get a list of your roommates idk
+// other useful info would be like, when was the longest the door went without being locked (as in, did some asshole forget to lock it) but that's more a data thing.
+// could track your habits of being in and out of the house. also very dangerous cuz then people know when to rob you.
+
 @implementation LogTableViewController {
     UIAlertView *popup;
     NSArray *intruderStr;
