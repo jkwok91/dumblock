@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
+#import <Wit/Wit.h>
 
-@interface LogTableViewController : UITableViewController
+@interface LogTableViewController : UITableViewController <WitDelegate>
 
 @property (nonatomic,strong) NSString *firebaseURL;
 @property (nonatomic,strong) Firebase *firebaseRef;

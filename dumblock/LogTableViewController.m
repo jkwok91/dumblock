@@ -16,14 +16,23 @@
 
 @end
 
-@implementation LogTableViewController
+@implementation LogTableViewController {
+    UIAlertView *popup;
+    NSArray *intruderStr;
+}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        intruderStr = @[@"maybe?",@"probably",@"seems that way",@"just you",@"you can never be sure"];
         self.firebaseURL = @"https://rasp-pi-timestamps.firebaseio.com";
         self.firebaseRef = [[Firebase alloc] initWithUrl:self.firebaseURL];
+        popup = [[UIAlertView alloc] initWithTitle:@"Query"
+                                                        message:@"Ask if dat b is going through your stuff."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"We good"
+                                              otherButtonTitles:nil];
     }
     return self;
 }
@@ -43,6 +52,17 @@
     
     // load up the recent logs and put into the array
     [self loadInitialData];
+    
+    // wit stuff
+    // set the WitDelegate object
+    [Wit sharedInstance].delegate = self;
+    
+    // create the button
+    CGRect screen = [UIScreen mainScreen].bounds;
+    CGRect rect = CGRectMake(screen.size.width/15, 30, 50, 50);
+    
+    WITMicButton* witButton = [[WITMicButton alloc] initWithFrame:rect];
+    [self.view addSubview:witButton];
 }
 
 
@@ -79,7 +99,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    NSLog(@"ppoop");
     return 1;
 }
 
@@ -87,13 +106,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"%d",[self.recentLogs count]);
     return [self.recentLogs count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"boop");
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
     // Configure the cell...
@@ -102,6 +119,18 @@
     cell.textLabel.text = [self.recentLogs objectAtIndex:(count-row-1)];
     
     return cell;
+}
+
+- (void)witDidGraspIntent:(NSString *)intent entities:(NSDictionary *)entities body:(NSString *)body error:(NSError *)e {
+    if (e) {
+        NSLog(@"[Wit] error: %@", [e localizedDescription]);
+        return;
+    }
+    
+    if ([intent isEqual:@"intruder"]) {
+        popup.message = intruderStr[arc4random()%[intruderStr count]];
+        [popup show];
+    }
 }
 
 /*

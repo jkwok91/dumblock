@@ -7,12 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import <Wit/Wit.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+     [Wit sharedInstance].accessToken = @"5BHC6ZBXEVB5K6M7HRZP65MIA62JSH7T"; // replace xxx by your Wit.AI access token
     return YES;
 }
 							
@@ -42,5 +44,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end
