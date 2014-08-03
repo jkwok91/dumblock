@@ -23,6 +23,12 @@
 		4C579904198D9370004797BF /* StatusChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C579903198D9370004797BF /* StatusChange.m */; };
 		4C579907198D9C2B004797BF /* LogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C579906198D9C2B004797BF /* LogTableViewController.m */; };
 		4C57990E198DA9AF004797BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C57990D198DA9AF004797BF /* libsqlite3.dylib */; };
+		4C579918198E512A004797BF /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C579917198E512A004797BF /* Firebase.framework */; };
+		4C57991A198E544A004797BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C579919198E544A004797BF /* Security.framework */; };
+		4C57991E198E549D004797BF /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C57991D198E549D004797BF /* libicucore.dylib */; };
+		4C579920198E54A8004797BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C57991F198E54A8004797BF /* SystemConfiguration.framework */; };
+		4C579922198E54AF004797BF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C579921198E54AF004797BF /* libc++.dylib */; };
+		4C579924198E54B5004797BF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C579923198E54B5004797BF /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,13 @@
 		4C579905198D9C2B004797BF /* LogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTableViewController.h; sourceTree = "<group>"; };
 		4C579906198D9C2B004797BF /* LogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTableViewController.m; sourceTree = "<group>"; };
 		4C57990D198DA9AF004797BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4C579917198E512A004797BF /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		4C579919198E544A004797BF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4C57991B198E545F004797BF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4C57991D198E549D004797BF /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		4C57991F198E54A8004797BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4C579921198E54AF004797BF /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		4C579923198E54B5004797BF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +78,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C579924198E54B5004797BF /* CFNetwork.framework in Frameworks */,
+				4C579922198E54AF004797BF /* libc++.dylib in Frameworks */,
+				4C579920198E54A8004797BF /* SystemConfiguration.framework in Frameworks */,
+				4C57991E198E549D004797BF /* libicucore.dylib in Frameworks */,
+				4C57991A198E544A004797BF /* Security.framework in Frameworks */,
+				4C579918198E512A004797BF /* Firebase.framework in Frameworks */,
 				4C57990E198DA9AF004797BF /* libsqlite3.dylib in Frameworks */,
 				4C5798D0198D91CE004797BF /* CoreGraphics.framework in Frameworks */,
 				4C5798D2198D91CE004797BF /* UIKit.framework in Frameworks */,
@@ -107,6 +126,13 @@
 		4C5798CC198D91CE004797BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C579923198E54B5004797BF /* CFNetwork.framework */,
+				4C579921198E54AF004797BF /* libc++.dylib */,
+				4C57991F198E54A8004797BF /* SystemConfiguration.framework */,
+				4C57991D198E549D004797BF /* libicucore.dylib */,
+				4C57991B198E545F004797BF /* MobileCoreServices.framework */,
+				4C579919198E544A004797BF /* Security.framework */,
+				4C579917198E512A004797BF /* Firebase.framework */,
 				4C57990D198DA9AF004797BF /* libsqlite3.dylib */,
 				4C5798CD198D91CE004797BF /* Foundation.framework */,
 				4C5798CF198D91CE004797BF /* CoreGraphics.framework */,
@@ -386,9 +412,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "dumblock/dumblock-Prefix.pch";
 				INFOPLIST_FILE = "dumblock/dumblock-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -399,9 +430,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "dumblock/dumblock-Prefix.pch";
 				INFOPLIST_FILE = "dumblock/dumblock-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -466,6 +502,7 @@
 				4C5798FE198D91CE004797BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C5798FF198D91CE004797BF /* Build configuration list for PBXNativeTarget "dumblockTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +511,7 @@
 				4C579901198D91CE004797BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

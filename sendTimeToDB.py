@@ -1,8 +1,9 @@
 #so the purpose of this is to send the timeestamp to a db. or some js shit online. whenever the button is pressed
 
-import datetime
+import datetime, os
 import RPi.GPIO as GPIO
 from firebase import firebase
+os.environ['TZ'] = 'US/Pacific'
 
 # setup gpio mode
 GPIO.setmode(GPIO.BCM)
@@ -14,15 +15,16 @@ myAppURL = "https://rasp-pi-timestamps.firebaseio.com/"
 firebase = firebase.FirebaseApplication(myAppURL,None)
 
 def log():
-  prevValue = GPIO.input(4)
+  prevValue = 0
   while True:
+    currentValue = GPIO.input(4)
     #aravind did this
-    if (GPIO.input(4) != prevValue):
+    if (currentValue != prevValue):
       # get time and send to db
-      status = "LOCKED" if GPIO.input(4) else "UNLOCKED"
+      status = "LOCKED" if currentValue else "UNLOCKED"
       now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
       firebase.post('/updates', {".value":status,".priority": now})
-      prevValue = GPIO.input(4)
+      prevValue = currentValue
 
 log()
 

@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <sqlite3.h>
+#import <Firebase/Firebase.h>
 
 @interface LogTableViewController : UITableViewController
 
-@property (strong, nonatomic) IBOutlet UILabel *dbstatus;
-@property (strong, nonatomic) NSString *databasePath;
-@property (nonatomic) sqlite3 *logDB;
+@property (nonatomic,strong) NSString *firebaseURL;
+@property (nonatomic,strong) Firebase *firebaseRef;
 
 @end
